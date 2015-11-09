@@ -25,10 +25,8 @@ module CSH.Eval.Frontend.Widgets (
 import qualified Data.Text as T
 
 import CSH.Eval.Frontend.Data
-import Text.Hamlet (hamletFile)
-import Text.Lucius (luciusFile)
-import Text.Blaze  (preEscapedText)
-import Yesod
+import Yesod.Core.Widget (whamletFile)
+import Text.Blaze        (preEscapedText)
 
 -- | A helper function to convert integers to text, to make templates that use
 -- Integer arguments more readable.

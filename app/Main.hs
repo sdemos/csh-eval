@@ -4,7 +4,6 @@ import Network.Wai.Handler.Warp (defaultSettings
                                 , runEnv)
 import Network.Wai.Handler.WarpTLS (runTLS, tlsSettings)
 import CSH.Eval.DB.Init (dbInitParser, runInit)
-import CSH.Eval.Routes (evalAPI)
 import CSH.Eval.Frontend (evalFrontend)
 import CSH.Eval.Config (Command (..), ServerCmd (..))
 import Options.Applicative
@@ -41,6 +40,7 @@ optWithTLS = switch
 -- This runs the evaluations databse frontend defined in "CSH.Eval.Frontend"
 -- using warp, running on the port defined the the PORT environment variable
 -- (defaulting to running on port 8000)
+main :: IO ()
 main = customExecParser pprefs opts >>= runWithOptions
    where
      pprefs = ParserPrefs { prefMultiSuffix     = " | "
@@ -77,8 +77,7 @@ main = customExecParser pprefs opts >>= runWithOptions
      dbInitCmd = command "initdb"
                 (info dbInitParser (progDesc "Initialize the evaluations database."))
 
-
-
+cshlogo :: String
 cshlogo =  "╔════════════════════════╗\n\r"
         ++ "║  ╔═══╗ ╗   ╔═══╦═══╗   ║\n"
         ++ "║  ║╔═╗╦ ║   /\\  ║  /\\   ║\n"

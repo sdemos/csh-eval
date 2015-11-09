@@ -21,9 +21,9 @@ import Ldap.Client.Search
 import qualified CSH.Eval.Config as Cfg
 import qualified Data.ByteString.Char8 as B
 import Data.Text
-import Data.Either
-import Safe
+import Safe (fromJustNote)
 
+lookup :: Text -> AttrValue -> IO (Maybe B.ByteString)
 lookup attr uid = do
             cfg  <- Cfg.evalConfig
             usr  <- (fmap (fromJustNote "ldap.user DNE in config.")

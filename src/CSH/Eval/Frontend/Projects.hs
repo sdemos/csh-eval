@@ -27,11 +27,10 @@ import qualified Data.Text as T
 
 import CSH.Eval.Frontend.Data
 import CSH.Eval.Frontend.Widgets
-import Text.Hamlet (hamletFile)
 import Text.Lucius (luciusFile)
 import Yesod
 import Yesod.Markdown
-import Data.List (unfoldr, find)
+import Data.List (find)
 
 projects :: [(T.Text, T.Text, T.Text, T.Text, Int)]
 projects = (take 100 . cycle)
